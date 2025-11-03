@@ -1,158 +1,73 @@
-# Rule-Based Chatbot
+# AI Chatbot
 
-A simple CLI-based chatbot that responds to user inputs using predefined rules and pattern matching.
+An intelligent, conversational chatbot powered by Google Gemini 2.5 Flash. Upgraded from a simple rule-based system to a fully AI-driven experience with natural language understanding, conversation history tracking, and persistent storage.
 
 ## Features
 
-- **Pattern Matching**: Uses regular expressions to identify user queries
-- **Rule-Based Responses**: Predefined rules with multiple response variations
-- **Simple & Lightweight**: No external dependencies required (uses Python standard library)
-- **Easy to Extend**: Add new rules by modifying the `_initialize_rules()` method
+- ✨ **AI-Powered Responses** - Uses Google Gemini 2.5 Flash for intelligent, context-aware conversations
+- 💾 **Conversation Management** - Maintains session history, tracks interactions with timestamps
+- 📝 **Persistent Storage** - Save/load conversations to JSON, comprehensive interaction logging
+- 🎯 **Easy Integration** - Simple CLI interface, FastAPI backend for web deployment
+- 🔧 **Modular Architecture** - Clean, extensible codebase with separate config and utility modules
+- 🚀 **Production-Ready** - Error handling, logging, and comprehensive documentation
 
 ## File Structure
 
 ```
-rule_based_bot/
-├── chatbot.py          # Main chatbot implementation
-└── README.md           # This file
+AI_ChatBot/
+├── chat_bot/
+│ ├── init.py # Package initialization
+│ ├── bot.py # Main GeminiBot class
+│ ├── config.py # Configuration settings
+│ └── utils.py # Utility functions
+├── chatbot.py # CLI chatbot interface
+├── requirements.txt # Python dependencies
+├── .env # place your api key here
+├── .gitignore # Git ignore rules
+└── README.md # This file         
 ```
-
-## How It Works
-
-The chatbot uses a rule-based approach:
-
-1. **Pattern Matching**: Each rule contains regex patterns that match user input
-2. **Response Selection**: When a pattern matches, a random response is selected from that rule
-3. **Fallback**: If no pattern matches, a default response is provided
 
 ## Installation
 
-No installation required! Just ensure you have Python 3.6+ installed.
-
+1️⃣ Clone Repository
 ```bash
-python --version  # Check your Python version
+git clone https://github.com/Abdul-Saboor1612/gemini-chatbot.git
+cd gemini-chatbot
+```
+2️⃣ Create & Activate Virtual Environment
+```bash
+python3 -m venv .venv
+
+# Activate (Mac/Linux)
+source .venv/bin/activate
+
+# Activate (Windows)
+.venv\Scripts\activate
 ```
 
-## Usage
+3️⃣ Install Dependencies
+```bash
+pip install -r requirements.txt
+```
 
-Run the chatbot from the command line:
+4️⃣ Setup API Key
+- Create .env file in the root directory
+- Get your API key from: [link](https://aistudio.google.com/app/apikey)
+- Go to .env file and write:
+```
+GOOGLE_API_KEY=your_actual_api_key_here
+```
 
+5️⃣ Test Installation
+```bash
+python test_api.py
+```
+
+6️⃣ Run Script
 ```bash
 python chatbot.py
 ```
 
-### Example Conversation
-
-```
-You: hello
-RuleBot: Hi there! What can I do for you?
-
-You: what can you do?
-RuleBot: I can chat with you about various topics! Try asking me about:
-  - Greetings
-  - How I'm doing
-  - My name
-  - The weather
-  - Time
-  - Jokes
-  - Or just say goodbye when you're done!
-
-You: tell me a joke
-RuleBot: Why don't programmers like nature? It has too many bugs! 🐛
-
-You: thanks
-RuleBot: You're welcome! Happy to help!
-
-You: bye
-RuleBot: Goodbye! Have a great day!
-```
-
-## Supported Queries
-
-The chatbot can respond to:
-
-- **Greetings**: hi, hello, hey
-- **Status**: how are you, how's it going
-- **Identity**: what's your name, who are you
-- **Help**: help, what can you do
-- **Weather**: questions about weather (with limitations notice)
-- **Time**: questions about current time (with limitations notice)
-- **Jokes**: tell me a joke, make me laugh
-- **Thanks**: thank you, thanks
-- **Goodbye**: bye, exit, quit
-
-## Customization
-
-To add new rules, modify the `_initialize_rules()` method in `chatbot.py`:
-
-```python
-{
-    'patterns': [r'\byour_pattern\b', r'\balternative_pattern\b'],
-    'responses': [
-        "First possible response",
-        "Second possible response"
-    ]
-}
-```
-
-### Example: Adding a Rule for "Favorite Color"
-
-```python
-{
-    'patterns': [r'\bfavorite color\b', r'\bfavou?rite colou?r\b'],
-    'responses': [
-        "I like all colors, but blue is quite nice!",
-        "As a chatbot, I appreciate the color of code editors - usually dark!",
-    ]
-}
-```
-
-## Exit Options
-
-- Type `bye`, `goodbye`, `exit`, or `quit`
-- Press `Ctrl+C` (keyboard interrupt)
-- Press `Ctrl+D` (EOF)
-
-## Technical Details
-
-- **Language**: Python 3.6+
-- **Libraries**: Only standard library (`re`, `sys`, `random`)
-- **Architecture**: Object-oriented with `RuleBasedChatbot` class
-- **Pattern Matching**: Case-insensitive regex matching
-
-## Code Structure
-
-```python
-RuleBasedChatbot
-├── __init__()               # Initialize chatbot
-├── _initialize_rules()      # Define all rules and patterns
-├── find_response()          # Match input to rules and get response
-└── chat()                   # Main conversation loop
-```
-
-## Limitations
-
-- No machine learning or natural language understanding
-- Cannot learn from conversations
-- Limited to predefined rules
-- No persistent memory between sessions
-- No external API integrations
-
-## Future Enhancements
-
-Possible improvements:
-
-- Add more rules and patterns
-- Include sentiment analysis
-- Add conversation history
-- Integrate with external APIs
-- Add logging functionality
-- Support multiple languages
-
-## License
-
-Free to use and modify for any purpose.
-
 ## Author
 
-Built as a simple demonstration of rule-based chatbot implementation.
+Built as a simple demonstration of AI chatbot CLI implementation.
